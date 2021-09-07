@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter, Route, Link} from 'react-router-dom'
 
 import CustomerList from './components/customers/List'
+import DepartmentList from './components/departments/List'
 
 function App(){
     return(
@@ -13,6 +14,7 @@ function App(){
             <Link to="/departments">Departments</Link> |
 
             <Route path="/customers" component={CustomerList}/>
+            <Route path='/departments' component={DepartmentList} />
 
         </div>
         </BrowserRouter>
