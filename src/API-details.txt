@@ -1,0 +1,89 @@
+The file contains all the API details
+
+1. Registering user
+POST - dct-ticket-master.herockuapp.com/users/register
+
+    register - body
+        username
+        email
+        password
+
+    Response-> id, username, email , createdAt
+
+2. Login user
+
+POST - dct-ticket-master.herockuapp.com/users/login
+
+    request - body
+        email
+        password
+
+    response -> token
+
+-------------------------------------------------------------------------------------------------
+                                    CUSTOMERS
+3. List customers
+
+GET - dct-ticket-master.herockuapp.com/customers
+
+    request - header
+        x-auth : token
+
+4. To create customer
+
+POST - dct-ticket-master.herockuapp.com/customers
+
+    request - header
+        x-auth : token
+
+    request - body
+
+        name,
+        email,
+        mobile
+
+5. show one customer
+
+GET - dct-ticket-master.herockuapp.com/customers/id
+
+    request-header
+        x-auth:token
+
+6. to delete customer
+
+DELETE - dct-ticket-master.herockuapp.com/customers/id
+
+    request-header
+        x-auth:token
+
+
+7. to update customer
+
+PUT dct-ticket-master.herockuapp.com/customer/id
+
+    request-header
+        x-auth:token
+
+    request-body
+        fields to update    
+
+----------------------------------------------------------------------------------------------
+
+                                    DEPARTMENTS
+
+Tasks
+1. Create department
+    field - name
+
+2. List departments
+
+3. Update department
+
+4. Delete department
+
+5. show department
+
+
+ 1. List departments
+
+ GET - dct-ticket-master.herockuapp.com/departments                                   
