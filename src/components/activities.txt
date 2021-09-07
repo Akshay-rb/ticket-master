@@ -1,0 +1,1 @@
+1. In the customers and departments section provide a search field with auto complete functionality

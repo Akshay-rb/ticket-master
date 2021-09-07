@@ -10,9 +10,12 @@ export default class DepartmentList extends React.Component{
         super()
         this.state={
             departments:[],
-            errors:{}
+            errors:{},
+            search:''
         }
         this.handleSubmit= this.handleSubmit.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
     }
 
     componentDidMount(){
@@ -58,6 +61,33 @@ export default class DepartmentList extends React.Component{
         .catch(error=>console.log(error))
     }
 
+    handleRemove(id){
+        const handleRemove = window.confirm('Are you sure?')
+        if(handleRemove){
+            
+        axios.delete(`/departments/${id}`, {
+            headers:{
+                'x-auth': localStorage.getItem('token')
+            }
+        })
+        .then(response=>{
+            console.log(response.data)
+            this.setState(prevState=>({
+                departments:prevState.departments.filter(department=> department._id !== response.data._id)
+            }))
+        })
+        .catch(error=> console.log(error))
+        }
+    }
+
+    handleSearch(e){
+    //     const search=e.target.value
+    //     this.setState(prevState=>({
+    //         departments: prevState.departments.filter(department=> department.name.toLowerCase().includes(search)),
+    //         search
+    //     }))
+     }
+
     render(){
         return(
             <div>
@@ -66,14 +96,24 @@ export default class DepartmentList extends React.Component{
                 {
                     !_.isEmpty(this.state.errors) && <FormError errors={this.state.errors}/>
                 }
-
-                <DepartmentForm handleSubmit={this.handleSubmit}/>
+                {/* <label>
+                <input type="text" 
+                       value={this.state.search}
+                       onChange={this.handleSearch} 
+                       placeholder='search....'
+                />
+                </label>
+                <br/>
+                <br/> */}
+                
+                <DepartmentForm handleSubmit={this.handleSubmit} handleSearch={this.handleSearch}/>
 
                 <table>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>name</th>
+                            <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,6 +122,9 @@ export default class DepartmentList extends React.Component{
                                 <tr key={department._id}>
                                     <td>{index +1}</td>
                                     <td>{department.name}</td>
+                                    <td> <button onClick={()=>{
+                                        this.handleRemove(department._id)
+                                    }}>remove</button> </td>
                                 </tr>    
                             )
                         })}

@@ -8,7 +8,8 @@ function FormError(props){
                 {/* converting object to array - Object.keys(object to convert) */}
                 {Object.keys(props.errors).map((prop,index)=>{
                     return <li key={index}>{prop}- {props.errors[prop]['message']} </li>
-                    // {props.errors- object, to access key from object , we have to use []}
+                    // {props.errors- object, to access key from object as we aremaking use of map, we have to use []... 
+                //      props.errors[prop][message] OR ----- props.errors[prop].messages        }
                 })}
             </ul>
         </div>
