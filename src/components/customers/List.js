@@ -1,5 +1,6 @@
 // import axios from 'axios'
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 import axios from '../../config/axios'
 
@@ -7,7 +8,8 @@ export default class CustomerList extends React.Component{
     constructor(){
         super()
         this.state={
-            customers:[]
+            customers:[],
+            isLoading:true
         }
     }
 
@@ -20,7 +22,7 @@ export default class CustomerList extends React.Component{
         .then(response =>{
             // console.log(response.data)
             const customers = response.data
-            this.setState({customers})
+            this.setState({customers, isLoading:false})
         })
         .then(error => console.log(error))
     }
@@ -28,7 +30,9 @@ export default class CustomerList extends React.Component{
     render(){
         return(
             <div>
-                <h1>Listing Customers- {this.state.customers.length}</h1>
+                {this.state.isLoading ? (<p>loading.....</p>) :(
+                    <div>
+                        <h1>Listing Customers- {this.state.customers.length}</h1>
                 <table>
                     <thead>
                         <tr>
@@ -51,7 +55,10 @@ export default class CustomerList extends React.Component{
                             })}
                     </tbody>
                 </table>
-
+                    </div>
+                ) }
+                
+            <Link to='/customers/new'>Add customer</Link>                
             </div>
         )
     }
