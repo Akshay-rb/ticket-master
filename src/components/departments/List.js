@@ -81,12 +81,9 @@ export default class DepartmentList extends React.Component{
     }
 
     handleSearch(e){
-    //     const search=e.target.value
-    //     this.setState(prevState=>({
-    //         departments: prevState.departments.filter(department=> department.name.toLowerCase().includes(search)),
-    //         search
-    //     }))
-     }
+        const search = e.target.value
+        this.setState({search})
+    }
 
     render(){
         return(
@@ -96,15 +93,17 @@ export default class DepartmentList extends React.Component{
                 {
                     !_.isEmpty(this.state.errors) && <FormError errors={this.state.errors}/>
                 }
-                {/* <label>
+
+                <label>
                 <input type="text" 
                        value={this.state.search}
                        onChange={this.handleSearch} 
                        placeholder='search....'
+                       name='search'
                 />
                 </label>
                 <br/>
-                <br/> */}
+                <br/>
                 
                 <DepartmentForm handleSubmit={this.handleSubmit} handleSearch={this.handleSearch}/>
 
@@ -117,7 +116,7 @@ export default class DepartmentList extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.departments.map((department, index)=>{
+                        {/* {this.state.departments.map((department, index)=>{
                             return(
                                 <tr key={department._id}>
                                     <td>{index +1}</td>
@@ -127,7 +126,27 @@ export default class DepartmentList extends React.Component{
                                     }}>remove</button> </td>
                                 </tr>    
                             )
-                        })}
+                        })} */}
+                        {   
+                            this.state.departments.filter((department)=>{
+                                if(this.state.search===''){
+                                    return department
+                                }else if(department.name.toLowerCase().includes(this.state.search.toLowerCase())){
+                                    return department    
+                                }
+                            }).map((department,index)=>{
+                                return(
+                                    <tr key={department._id}>
+                                    <td>{index +1}</td>
+                                    <td>{department.name}</td>
+                                    <td> <button onClick={()=>{
+                                        this.handleRemove(department._id)
+                                    }}>remove</button> </td>
+                                </tr> 
+                                )
+                            })
+                        }
+
                     </tbody>
                 </table>
             </div>
