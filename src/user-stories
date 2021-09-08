@@ -1,0 +1,30 @@
+As a <typof user- roles - admin , moderator, user> i should be able to <specific  goal with an outcome>
+
+1.  As a user i should be able to find a link for employees on all the pages, when clicked where i see a list of employees
+
+    An employee has
+    -- name
+    -- email
+    -- mobile
+    -- departmen
+    -- department will be the id of the department
+
+    -- create employees folder under components
+    -- crate a list.js
+    -- create EmployeeList component inside list.js as a class component
+
+    - - constructor
+        - state- employees -[]
+    - - componentDidMount
+        - making api call and updating the state
+    - - render
+        - listing the state values in a table or list format
+
+    -- provide a link for employees in app.js
+    -- import employee list and specify the route
+
+2.  As a user I should be able to click on add Employee link from employee list, when click, i see a form to add employee details like
+
+        name, email, mobile, department
+
+3.  As a user I should be able to see the list of departments in the Employee Form, which I can choose while adding a new employee
