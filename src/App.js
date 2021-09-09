@@ -8,6 +8,7 @@ import DepartmentList from './components/departments/List'
 
 import EmployeeList from './components/employees/List'
 import EmployeeNew from './components/employees/New'
+import EmployeeShow from './components/employees/Show'
 
 function App(){
     return(
@@ -20,11 +21,14 @@ function App(){
             <Link to ="/employees">Employees</Link>
 
             <Route path="/customers" component={CustomerList} exact={true} />
-            <Route path='/departments' component={DepartmentList} />
             <Route path='/customers/new' component={CustomerNew} />
+
+            <Route path='/departments' component={DepartmentList} />
+            
 
             <Route path="/employees" component={EmployeeList} exact={true} />
             <Route path="/employees/new" component={EmployeeNew} />
+            <Route path="/employees/:id" component={EmployeeShow} />
 
         </div>
         </BrowserRouter>

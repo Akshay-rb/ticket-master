@@ -54,13 +54,15 @@ export default class EmployeeList extends React.Component{
                             return(
                                 <tr key={employee._id}>
                                     <td>{index+1}</td>
-                                    <td>{employee.name}</td>
+                                    <td><Link to ={`/employees/${employee._id}`}>{employee.name}</Link></td>
                                     <td>{employee.department.name}</td>
+                                    {/* <td>{employee._id}</td> */}
                                 </tr>
                             )
                         })}
                     </tbody>
                 </table>
+                {/* <EmployeeShow /> */}
                 <br />
                 <Link to="/employees/new">Add Employee</Link>
             </div>

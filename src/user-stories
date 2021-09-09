@@ -28,3 +28,19 @@ As a <typof user- roles - admin , moderator, user> i should be able to <specific
         name, email, mobile, department
 
 3.  As a user I should be able to see the list of departments in the Employee Form, which I can choose while adding a new employee
+
+4.  As a user when i click on the submit button in the employee form, form data needs to be sent to the server for db insertion
+
+5. As a user if the data is inserted succesfully , I want to be re directed to the employee list page , in case there is server error. I want to see the errors about the form
+
+6. As a user I must be able to click on the name of the employee and it must take me to the employee show page where I get to see the name, email and department the employee belongs to
+
+7. As a user , when i am on the employee show page , I want a link called as "back" , when clicked it will bring me back to employee list page
+
+
+
+
+
+//////////////////////////////////////////////////////
+        Build ticket master app--------------- discussion @ 2:10 day 18 session 2 
+//////////////////////////////////////////////////////
