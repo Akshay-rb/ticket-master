@@ -1,6 +1,7 @@
 import axios from '../../config/axios'
 import React from 'react'
 import {Link} from 'react-router-dom'
+import _ from 'lodash'
 
 
 
@@ -30,13 +31,15 @@ export default class EmployeeShow extends React.Component{
     }
 
     render(){
-        console.log(this.state.employee.department)
+        console.log('render',this.state.employee.department)
         return(
             <div>
                 <h2>Employee details</h2>
                 <p> name- {this.state.employee.name}</p>
                 <p>email - {this.state.employee.email}</p>
-                <p>department- {}</p>
+                <p>department- {!_.isEmpty(this.state.employee) && this.state.employee.department.name}</p>
+
+                {/* <p>department- {!_.isEmpty(this.state.employee) && this.state.employee.department.name}</p> */}
                 <Link to='/employees'>Back</Link>
             </div>
             

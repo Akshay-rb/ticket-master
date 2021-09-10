@@ -26,7 +26,7 @@ export default class CustomerNew extends React.Component{
                 const errors = response.data.errors
                 this.setState({errors})
             }else{
-                this.props.history.push('/customers') // --------- redirect using react router dom --- property called as history , we need to call a methos push , specify the redirect
+                this.props.history.push(`/customers/${response.data._id}`) // --------- redirect using react router dom --- property called as history , we need to call a methos push , specify the redirect
             }
         })
         .catch(error=>console.log(error))

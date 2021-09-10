@@ -1,12 +1,12 @@
 import React from 'react'
 
 export default class CustomerForm extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
-            name:'',
-            email:'',
-            mobile:''
+            name: props.customer ? props.customer.name  : '',
+            email:props.customer ? props.customer.email:  '',
+            mobile:props.customer ? props.customer.mobile:''
         }
     }
 
@@ -33,7 +33,7 @@ export default class CustomerForm extends React.Component{
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor='name'>name</label>
                     <input  type='text' 
-                            value={this.state.value} 
+                            value={this.state.name} 
                             name='name' 
                             id='name' 
                             onChange={this.handleChange}
@@ -42,7 +42,7 @@ export default class CustomerForm extends React.Component{
                     <label htmlFor='email'>email</label>
                     <input 
                         type='text'
-                        value={this.state.value}
+                        value={this.state.email}
                         id='email'
                         name='email'
                         onChange={this.handleChange}
@@ -51,7 +51,7 @@ export default class CustomerForm extends React.Component{
                     <label htmlFor='mobile'> mobile</label>
                     <input
                         type='text'
-                        value={this.state.value}
+                        value={this.state.mobile}
                         id='mobile'
                         name='mobile'
                         onChange={this.handleChange}
